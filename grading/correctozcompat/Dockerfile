@@ -19,7 +19,8 @@ RUN     echo "export OZHOME=/opt/mozart2" >> /etc/profile.d/oz.sh && \
         echo "export PATH=/opt/mozart2/bin:$""PATH" >> /etc/profile.d/oz.sh
 
 # Install ANTLR4
-RUN     wget -P /usr/local/lib/antlr-4.5.3-complete.jar http://www.antlr.org/download/antlr-4.5.3-complete.jar && \
+RUN     yum -y install wget && \
+        wget -P /usr/local/lib/antlr-4.5.3-complete.jar http://www.antlr.org/download/antlr-4.5.3-complete.jar && \
         export CLASSPATH=".:/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH" && \
         alias antlr4='java -jar /usr/local/lib/antlr-4.5.3-complete.jar' && \
         alias grun='java org.antlr.v4.gui.TestRig'
